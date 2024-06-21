@@ -6,8 +6,7 @@ import 'package:nasa_api/features/last_week_pictures/data/data_source/apod_data_
 import 'package:nasa_api/features/last_week_pictures/data/repository/apod_repository_impl.dart';
 
 import '../../../../fixtures/error_message_fixture.dart';
-import '../../../../fixtures/pictures_of_the_day_fixtures.dart';
-import '../../domain/use_case/get_last_week_pictures_use_case_test.mocks.dart';
+import '../../../../fixtures/pictures_of_the_day/pictures_of_the_day_fixtures.dart';
 import 'apod_repository_impl_test.mocks.dart';
 
 @GenerateMocks([ApodDataSource])

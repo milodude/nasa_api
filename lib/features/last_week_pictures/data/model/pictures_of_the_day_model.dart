@@ -10,11 +10,11 @@ class PicturesOfTheDayModel extends PictureOfTheDay {
 
   factory PicturesOfTheDayModel.fromJson(Map<String, dynamic> mensaje) {
     return PicturesOfTheDayModel(
-      date: (mensaje['date'] as DateTime),
-      copyright: mensaje['copyright'],
-      explanation: mensaje['explanation'],
-      title: mensaje['title'],
-      url: mensaje['url'],
+      date: DateTime.parse((mensaje['date'] as String)),
+      copyright: mensaje['copyright'] ?? '',
+      explanation: mensaje['explanation'] ?? '',
+      title: mensaje['title'] ?? '',
+      url: mensaje['url'] ?? '',
     );
   }
 }
