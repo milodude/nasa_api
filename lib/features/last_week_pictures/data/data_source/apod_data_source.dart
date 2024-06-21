@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:intl/intl.dart';
 import 'package:nasa_api/core/constants/keys.dart';
 import 'package:nasa_api/core/extension/date_extension.dart';
 import 'package:nasa_api/core/providers/url_provider.dart';

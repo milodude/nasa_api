@@ -1,14 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:intl/intl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:nasa_api/core/constants/keys.dart';
 import 'package:nasa_api/core/error/exceptions.dart';
-import 'package:nasa_api/core/error/failure.dart';
 import 'package:nasa_api/core/extension/date_extension.dart';
 import 'package:nasa_api/core/providers/url_provider.dart';
 import 'package:nasa_api/features/last_week_pictures/data/data_source/apod_data_source.dart';
