@@ -8,6 +8,7 @@ import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_th
 import 'package:nasa_api/features/last_week_pictures/domain/repository/apod_repository.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/use_case/get_last_week_pictures_use_case.dart';
 
+import '../../../../fixtures/error_message_fixture.dart';
 import 'get_last_week_pictures_use_case_test.mocks.dart';
 
 @GenerateMocks([ApodRepository])
@@ -25,8 +26,6 @@ void main() {
         title: 'My title',
         url: 'someUrl'),
   ];
-
-  const String errorMessage = 'soMEErrorMesSagE';
 
   group('${useCase.runtimeType}: tests', () {
     test('When requesting all the pictures of the week should retrieve a list',
