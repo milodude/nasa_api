@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/main_module.dart';
 
+import 'core/constants/colors.dart';
+
 void main() {
   runApp(
     ModularApp(
@@ -23,12 +25,21 @@ class NasasPicturesOfTheWeekApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Last week pictures of the day',
       routerConfig: Modular.routerConfig,
       // routeInformationParser: Modular.routeInformationParser,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: AppBarTheme(
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+        ),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: colorScheme.primary,
+          primary: colorScheme.primary,
+          secondary: colorScheme.secondary,
+        ),
       ),
     );
   }
