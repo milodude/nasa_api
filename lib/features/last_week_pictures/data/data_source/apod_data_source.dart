@@ -38,8 +38,7 @@ class ApodDataSourceImpl implements ApodDataSource {
     final Uri uri = urlProvider.getUrl('planetary/apod/', params);
 
     final Map<String, String> headers = await urlProvider.getHeaders();
-    final http.Response response =
-        await http.Client().get(uri, headers: headers);
+    final http.Response response = await httpClient.get(uri, headers: headers);
     DebugProvider.debugLog(
         '[$runtimeType] - Getting server response with code: ${response.statusCode}');
     if (response.statusCode == 200) {

@@ -29,13 +29,6 @@ void main() {
     'Access-Control-Allow-Origin': '*',
   };
 
-  // String getStartDate() {
-  //   DateTime now = DateTime.now();
-  //   DateTime pastDate = now.subtract(const Duration(days: 7));
-  //   DateFormat dateFormat = DateFormat("yyyy-MM-dd");
-  //   return dateFormat.format(pastDate);
-  // }
-
   List<PicturesOfTheDayModel> getList() {
     List<PicturesOfTheDayModel> photoList = <PicturesOfTheDayModel>[];
     for (Map<String, dynamic> item in tPicturesListResponse) {
