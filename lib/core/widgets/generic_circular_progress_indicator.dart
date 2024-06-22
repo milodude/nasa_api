@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+/// GenericCircularProgressindicator
+///
+/// Circular progress indicator used in the app. Has an optional [size]
+/// parameter which default value is 70.
 class GenericCircularProgressindicator extends StatelessWidget {
   const GenericCircularProgressindicator({
     super.key,
