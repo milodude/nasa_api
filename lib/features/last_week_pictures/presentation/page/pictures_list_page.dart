@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../domain/entity/picture_of_the_day.dart';
+import '../widgets/apod_card.dart';
 
 /// PicturesListPage
 ///
@@ -14,7 +16,9 @@ class PicturesListPage extends StatelessWidget {
     return ListView.builder(
       itemCount: pictures.length,
       itemBuilder: (BuildContext context, int index) {
-        return Text(pictures[index].title);
+        return ApodCard(pictureOfTheDay: pictures[index])
+            .animate(delay: Duration(milliseconds: 100 * index))
+            .slide(begin: Offset.fromDirection(0, 1), curve: Curves.easeIn);
       },
     );
   }
