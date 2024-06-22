@@ -21,11 +21,11 @@ abstract class ApodDataSource {
 /// 1 - [getLastWeekPicturesOfTheDay] - Gets the pictures from the last week.
 class ApodDataSourceImpl implements ApodDataSource {
   final UrlProvider urlProvider;
-  final http.Client httpClient;
+  // final http.Client httpClient;
 
   ApodDataSourceImpl({
     required this.urlProvider,
-    required this.httpClient,
+    // required this.httpClient,
   });
 
   @override
@@ -38,7 +38,8 @@ class ApodDataSourceImpl implements ApodDataSource {
     final Uri uri = urlProvider.getUrl('planetary/apod/', params);
 
     final Map<String, String> headers = await urlProvider.getHeaders();
-    final http.Response response = await httpClient.get(uri, headers: headers);
+    final http.Response response =
+        await http.Client().get(uri, headers: headers);
     DebugProvider.debugLog(
         '[$runtimeType] - Getting server response with code: ${response.statusCode}');
     if (response.statusCode == 200) {
