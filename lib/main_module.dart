@@ -1,4 +1,3 @@
-import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_the_day.dart';

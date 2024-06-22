@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:nasa_api/core/constants/widget_keys.dart';
 import '../../../../core/constants/pages.dart';
 import '../../domain/entity/picture_of_the_day.dart';
 

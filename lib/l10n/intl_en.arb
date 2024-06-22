@@ -1,0 +1,23 @@
+{
+    "@@locale": "en",
+    "nasaAppTitle": "Nasa's pictures of the day",
+    "@presupuestoAprobado":{
+        "description":"Apps title"
+    },
+    "imageNotAvailable": "Image not available",
+    "@imageNotAvailable":{
+        "description":"image not available text"
+    },
+    "pictureDetailsTitle": "Picture details",
+    "@pictureDetailsTitle":{
+        "description":"page title"
+    },
+    "dateTaken": "Date taken",
+    "@dateTaken":{
+        "description":"date taken subtitle"
+    },
+    "copyright": "Copyright",
+    "@copyright":{
+        "description":"Copyright subtitle"
+    }
+}

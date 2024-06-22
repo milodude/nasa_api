@@ -2,9 +2,10 @@ import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:nasa_api/main_module.dart';
-
+import 'generated/l10n.dart';
+import 'main_module.dart';
 import 'core/constants/colors.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
@@ -25,10 +26,18 @@ class NasasPicturesOfTheWeekApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English
+        Locale('pt', ''), // Portuguese
+      ],
       debugShowCheckedModeBanner: false,
-      title: 'Last week pictures of the day',
       routerConfig: Modular.routerConfig,
-      // routeInformationParser: Modular.routeInformationParser,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: colorScheme.primary,

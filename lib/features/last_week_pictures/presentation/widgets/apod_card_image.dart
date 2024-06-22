@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_api/generated/l10n.dart';
 
 import '../../../../core/widgets/generic_circular_progress_indicator.dart';
 import '../../domain/entity/picture_of_the_day.dart';
@@ -22,7 +23,7 @@ class ApodCardImage extends StatelessWidget {
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) => Center(
             child: Text(
-              'Image not available',
+              AppLocalizations.of(context).imageNotAvailable,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).primaryColor,
                   ),

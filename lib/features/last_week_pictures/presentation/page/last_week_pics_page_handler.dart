@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/core/widgets/generic_circular_progress_indicator.dart';
 import 'package:nasa_api/features/last_week_pictures/presentation/page/pictures_list_page.dart';
+import 'package:nasa_api/generated/l10n.dart';
 
 import '../../../../core/widgets/generic_animated_title.dart';
 import '../bloc/apod_bloc.dart';
@@ -30,8 +31,8 @@ class _LastWeekPicsPageHandlerState extends State<LastWeekPicsPageHandler> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const GenericAnimatedTitle(
-          child: Text('Nasa\'s pictures of the day'),
+        title: GenericAnimatedTitle(
+          child: Text(AppLocalizations.of(context).nasaAppTitle),
         ),
       ),
       body: BlocBuilder<ApodBloc, ApodState>(
