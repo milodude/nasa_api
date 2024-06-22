@@ -21,11 +21,11 @@ abstract class ApodDataSource {
 /// 1 - [getLastWeekPicturesOfTheDay] - Gets the pictures from the last week.
 class ApodDataSourceImpl implements ApodDataSource {
   final UrlProvider urlProvider;
-  // final http.Client httpClient;
+  final http.Client httpClient;
 
   ApodDataSourceImpl({
     required this.urlProvider,
-    // required this.httpClient,
+    required this.httpClient,
   });
 
   @override
