@@ -10,4 +10,9 @@ extension DateExtension on DateTime {
     DateFormat dateFormat = DateFormat("yyyy-MM-dd");
     return dateFormat.format(pastDate);
   }
+
+  String get formatDate {
+    DateFormat dateFormat = DateFormat("dd-MM-yyyy");
+    return dateFormat.format(this);
+  }
 }
