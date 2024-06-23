@@ -81,5 +81,29 @@ void main() {
       tearDown: bloc.close,
       wait: const Duration(milliseconds: 500),
     );
+
+    blocTest<ApodBloc, ApodState>(
+      'emits [ApodLoading, ApodLoaded], should get a list of pictures after searching',
+      setUp: () {
+        when(mockGetLastWeekPicturesUseCase.call(connected)).thenAnswer(
+            (Invocation realInvocation) =>
+                Future<Either<Failure, List<PictureOfTheDay>>>.value(
+                    Right<Failure, List<PictureOfTheDay>>(mockPicturesList)));
+      },
+      seed: () => ApodLoaded(picturesList: mockPicturesList),
+      build: () {
+        return bloc;
+      },
+      act: (ApodBloc bloc) => bloc.add(const SearchPicsEvent(
+          searchInput: 'Search this', hasConnection: connected)),
+      expect: () {
+        return <ApodState>[
+          ApodLoading(),
+          ApodLoaded(picturesList: [mockPicturesList.first]),
+        ];
+      },
+      tearDown: bloc.close,
+      wait: const Duration(milliseconds: 500),
+    );
   });
 }

@@ -4,10 +4,16 @@ import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_th
 final List<PictureOfTheDay> mockPicturesList = [
   PictureOfTheDay(
       date: DateTime.now(),
-      copyright: 'copyright',
+      copyright: 'copyright1',
       explanation: 'some explanation',
-      title: 'My title',
+      title: 'Search this',
       url: 'someUrl'),
+  PictureOfTheDay(
+      date: DateTime.now(),
+      copyright: 'copyright1',
+      explanation: 'some explanation1',
+      title: 'My title1',
+      url: 'someUrl1'),
 ];
 
 final List<PicturesOfTheDayModel> mockPicturesModelList = [

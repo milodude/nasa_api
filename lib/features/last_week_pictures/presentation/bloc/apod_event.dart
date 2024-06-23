@@ -15,3 +15,16 @@ class GetLastWeekPicsEvent extends ApodEvent {
 
   const GetLastWeekPicsEvent({required this.hasConnection});
 }
+
+/// SearchPicsEvent
+///
+/// Event that searches for week pictures of the day.
+class SearchPicsEvent extends ApodEvent {
+  final String searchInput;
+  final bool hasConnection;
+
+  const SearchPicsEvent({
+    required this.searchInput,
+    required this.hasConnection,
+  });
+}

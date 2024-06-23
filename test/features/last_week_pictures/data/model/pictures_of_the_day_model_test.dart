@@ -16,7 +16,7 @@ void main() {
       final item = PicturesOfTheDayModel.fromJson(element);
       parsedList.add(item);
     }
-
     //ASSERT
+    expect(parsedList.length, 7);
   });
 }

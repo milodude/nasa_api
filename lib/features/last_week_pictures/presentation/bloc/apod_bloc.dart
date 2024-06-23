@@ -17,6 +17,7 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
   ApodBloc({required this.getLastWeekPicturesUseCase}) : super(ApodInitial()) {
     on<GetLastWeekPicsEvent>(
         ((event, emit) => _getLastWeekPictures(event, emit)));
+    on<SearchPicsEvent>(((event, emit) => _searchPictures(event, emit)));
   }
 
   Future<void> _getLastWeekPictures(
@@ -35,6 +36,33 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
       emit(ApodError(errorMessage: error.errorMessage));
     }, (List<PictureOfTheDay> picturesList) {
       emit(ApodLoaded(picturesList: picturesList));
+    });
+  }
+
+  Future<void> _searchPictures(
+    SearchPicsEvent event,
+    Emitter<ApodState> emit,
+  ) async {
+    emit(ApodLoading());
+    final Either<Failure, List<PictureOfTheDay>> result =
+        await getLastWeekPicturesUseCase.call(event.hasConnection);
+    result.fold((Failure error) {
+      if (error is NoConnectionFailure) {
+        emit(const ApodNoConnectionError());
+        return;
+      }
+      emit(ApodError(errorMessage: error.errorMessage));
+    }, (List<PictureOfTheDay> picturesList) {
+      if (event.searchInput.isEmpty) {
+        emit(ApodLoaded(picturesList: picturesList));
+      } else {
+        var results = picturesList
+            .where((element) => element.title
+                .toLowerCase()
+                .contains(event.searchInput.toLowerCase()))
+            .toList();
+        emit(ApodLoaded(picturesList: results));
+      }
     });
   }
 }
