@@ -20,7 +20,7 @@
     "@copyright":{
         "description":"Copyright subtitle"
     },
-    "noConnectionError": "There is no internet",
+    "noConnectionError": "There is no internet and no local data",
     "@noConnectionError":{
         "description":"no connection error text"
     },

@@ -63,7 +63,6 @@ class _LastWeekPicsPageHandlerState extends State<LastWeekPicsPageHandler> {
       body: StreamBuilder(
         stream: widget.connectivityProvider.connectionStatusStream,
         builder: (context, snapshot) {
-          DebugProvider.debugLog('Has connection: ${snapshot.data}');
           if (!snapshot.hasData) {
             return const GenericCircularProgressindicator();
           } else {
@@ -88,7 +87,11 @@ class _LastWeekPicsPageHandlerState extends State<LastWeekPicsPageHandler> {
                     if (state is ApodInitial || state is ApodLoading) {
                       return const GenericCircularProgressindicator();
                     } else if (state is ApodLoaded) {
-                      return PicturesListPage(pictures: state.picturesList);
+                      return PicturesListPage(
+                        pictures: state.picturesList,
+                        hasConnection: snapshot.data!,
+                        inputText: _inputController.text,
+                      );
                     } else if (state is ApodError) {
                       return Center(child: Text(state.errorMessage));
                     } else if (state is ApodNoConnectionError) {
