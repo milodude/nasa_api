@@ -6,6 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:nasa_api/core/providers/connectivity_provider.dart' as _i5;
 import 'package:nasa_api/features/last_week_pictures/data/data_source/apod_data_source.dart'
     as _i2;
 import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_day_model.dart'
@@ -42,4 +43,30 @@ class MockApodDataSource extends _i1.Mock implements _i2.ApodDataSource {
         returnValue: _i3.Future<List<_i4.PicturesOfTheDayModel>>.value(
             <_i4.PicturesOfTheDayModel>[]),
       ) as _i3.Future<List<_i4.PicturesOfTheDayModel>>);
+}
+
+/// A class which mocks [ConnectivityProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockConnectivityProvider extends _i1.Mock
+    implements _i5.ConnectivityProvider {
+  MockConnectivityProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Stream<bool> get connectionStatusStream => (super.noSuchMethod(
+        Invocation.getter(#connectionStatusStream),
+        returnValue: _i3.Stream<bool>.empty(),
+      ) as _i3.Stream<bool>);
+
+  @override
+  _i3.Future<void> checkInitialConnection() => (super.noSuchMethod(
+        Invocation.method(
+          #checkInitialConnection,
+          [],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
 }

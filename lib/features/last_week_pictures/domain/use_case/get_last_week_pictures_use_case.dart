@@ -7,13 +7,12 @@ import '../../../../../core/use_case/base_use_case.dart';
 /// GetLastWeekPicturesUseCase
 ///
 /// Use case to get last week pictures of the day.
-class GetLastWeekPicturesUseCase
-    extends UseCase<List<PictureOfTheDay>, NoParams> {
+class GetLastWeekPicturesUseCase extends UseCase<List<PictureOfTheDay>, bool> {
   final ApodRepository apodRepository;
 
   GetLastWeekPicturesUseCase({required this.apodRepository});
   @override
-  Future<Either<Failure, List<PictureOfTheDay>>> call(NoParams params) {
-    return apodRepository.getLastWeekPictures();
+  Future<Either<Failure, List<PictureOfTheDay>>> call(bool params) {
+    return apodRepository.getLastWeekPictures(params);
   }
 }

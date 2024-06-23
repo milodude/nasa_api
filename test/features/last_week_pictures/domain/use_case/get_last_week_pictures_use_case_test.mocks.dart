@@ -46,10 +46,10 @@ class MockApodRepository extends _i1.Mock implements _i3.ApodRepository {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, List<_i6.PictureOfTheDay>>>
-      getLastWeekPictures() => (super.noSuchMethod(
+      getLastWeekPictures(bool? hasConnection) => (super.noSuchMethod(
             Invocation.method(
               #getLastWeekPictures,
-              [],
+              [hasConnection],
             ),
             returnValue: _i4.Future<
                     _i2.Either<_i5.Failure, List<_i6.PictureOfTheDay>>>.value(
@@ -57,7 +57,7 @@ class MockApodRepository extends _i1.Mock implements _i3.ApodRepository {
               this,
               Invocation.method(
                 #getLastWeekPictures,
-                [],
+                [hasConnection],
               ),
             )),
           ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.PictureOfTheDay>>>);
