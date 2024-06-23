@@ -1,16 +1,32 @@
+import 'dart:io';
+
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:nasa_api/core/constants/hosts.dart';
+import 'package:nasa_api/core/providers/debug_provider.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sembast/sembast.dart';
+import 'package:sembast/sembast_io.dart';
 import 'generated/l10n.dart';
 import 'main_module.dart';
 import 'core/constants/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:path/path.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //!Local Database creation
+  final Directory pathDir = await getApplicationDocumentsDirectory();
+  final String dbPath = join(pathDir.path, localServerUrl);
+  DebugProvider.debugLog('Database path = $dbPath');
+  // await databaseFactoryIo.deleteDatabase(dbPath);
+
+  final Database db = await databaseFactoryIo.openDatabase(dbPath);
   runApp(
     ModularApp(
-      module: AppModule(),
+      module: AppModule(db: db),
       child: DevicePreview(
         enabled: !kReleaseMode,
         builder: (context) => const NasasPicturesOfTheWeekApp(),
