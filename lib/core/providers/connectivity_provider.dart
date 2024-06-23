@@ -4,22 +4,21 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 
 class ConnectivityProvider {
-  ConnectivityProvider({required this.client}) {
-    _connectivity = Connectivity();
-    _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+  ConnectivityProvider({required this.client, required this.connectivity}) {
+    connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     checkInitialConnection();
     _startPeriodicInternetCheck();
   }
 
   final StreamController<bool> _connectionStatusController =
       StreamController<bool>.broadcast();
-  late Connectivity _connectivity;
+  final Connectivity connectivity;
   final http.Client client;
 
   Stream<bool> get connectionStatusStream => _connectionStatusController.stream;
 
   Future<void> checkInitialConnection() async {
-    final status = await _connectivity.checkConnectivity();
+    final status = await connectivity.checkConnectivity();
     _updateConnectionStatus(status);
   }
 

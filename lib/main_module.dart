@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/core/providers/connectivity_provider.dart';
@@ -37,7 +38,8 @@ class AppModule extends Module {
     //!CORE
     i.addInstance<UrlProvider>(UrlProvider(baseUrl: serverUrl));
     i.addInstance<http.Client>(http.Client());
-    i.addInstance<ConnectivityProvider>(ConnectivityProvider(client: i()));
+    i.addInstance<ConnectivityProvider>(
+        ConnectivityProvider(client: i(), connectivity: Connectivity()));
   }
 
   @override

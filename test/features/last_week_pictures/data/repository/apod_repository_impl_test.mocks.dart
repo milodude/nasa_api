@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i5;
 
+import 'package:connectivity_plus/connectivity_plus.dart' as _i2;
+import 'package:http/http.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:nasa_api/core/providers/connectivity_provider.dart' as _i5;
+import 'package:nasa_api/core/providers/connectivity_provider.dart' as _i7;
 import 'package:nasa_api/features/last_week_pictures/data/data_source/apod_data_source.dart'
-    as _i2;
-import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_day_model.dart'
     as _i4;
+import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_day_model.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,48 +27,86 @@ import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeConnectivity_0 extends _i1.SmartFake implements _i2.Connectivity {
+  _FakeConnectivity_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeClient_1 extends _i1.SmartFake implements _i3.Client {
+  _FakeClient_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [ApodDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApodDataSource extends _i1.Mock implements _i2.ApodDataSource {
+class MockApodDataSource extends _i1.Mock implements _i4.ApodDataSource {
   MockApodDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.PicturesOfTheDayModel>> getLastWeekPicturesOfTheDay() =>
+  _i5.Future<List<_i6.PicturesOfTheDayModel>> getLastWeekPicturesOfTheDay() =>
       (super.noSuchMethod(
         Invocation.method(
           #getLastWeekPicturesOfTheDay,
           [],
         ),
-        returnValue: _i3.Future<List<_i4.PicturesOfTheDayModel>>.value(
-            <_i4.PicturesOfTheDayModel>[]),
-      ) as _i3.Future<List<_i4.PicturesOfTheDayModel>>);
+        returnValue: _i5.Future<List<_i6.PicturesOfTheDayModel>>.value(
+            <_i6.PicturesOfTheDayModel>[]),
+      ) as _i5.Future<List<_i6.PicturesOfTheDayModel>>);
 }
 
 /// A class which mocks [ConnectivityProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockConnectivityProvider extends _i1.Mock
-    implements _i5.ConnectivityProvider {
+    implements _i7.ConnectivityProvider {
   MockConnectivityProvider() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Stream<bool> get connectionStatusStream => (super.noSuchMethod(
-        Invocation.getter(#connectionStatusStream),
-        returnValue: _i3.Stream<bool>.empty(),
-      ) as _i3.Stream<bool>);
+  _i2.Connectivity get connectivity => (super.noSuchMethod(
+        Invocation.getter(#connectivity),
+        returnValue: _FakeConnectivity_0(
+          this,
+          Invocation.getter(#connectivity),
+        ),
+      ) as _i2.Connectivity);
 
   @override
-  _i3.Future<void> checkInitialConnection() => (super.noSuchMethod(
+  _i3.Client get client => (super.noSuchMethod(
+        Invocation.getter(#client),
+        returnValue: _FakeClient_1(
+          this,
+          Invocation.getter(#client),
+        ),
+      ) as _i3.Client);
+
+  @override
+  _i5.Stream<bool> get connectionStatusStream => (super.noSuchMethod(
+        Invocation.getter(#connectionStatusStream),
+        returnValue: _i5.Stream<bool>.empty(),
+      ) as _i5.Stream<bool>);
+
+  @override
+  _i5.Future<void> checkInitialConnection() => (super.noSuchMethod(
         Invocation.method(
           #checkInitialConnection,
           [],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }
