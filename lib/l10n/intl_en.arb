@@ -19,5 +19,9 @@
     "copyright": "Copyright",
     "@copyright":{
         "description":"Copyright subtitle"
+    },
+    "noConnectionError": "There is no internet",
+    "@noConnectionError":{
+        "description":"no connection error text"
     }
 }

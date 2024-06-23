@@ -4,5 +4,6 @@
     "imageNotAvailable": "Imagem não disponível",
     "pictureDetailsTitle": "Detalhes da imagem",
     "dateTaken": "Data tirada",
-    "copyright": "Direito autoral"
+    "copyright": "Direito autoral",
+    "noConnectionError": "Não há internet"
 }
