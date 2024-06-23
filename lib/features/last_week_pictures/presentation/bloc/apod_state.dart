@@ -22,3 +22,7 @@ final class ApodError extends ApodState {
 
   const ApodError({required this.errorMessage});
 }
+
+final class ApodNoConnectionError extends ApodState {
+  const ApodNoConnectionError();
+}

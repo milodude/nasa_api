@@ -8,7 +8,6 @@ import 'dart:async' as _i5;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:nasa_api/core/error/failure.dart' as _i6;
-import 'package:nasa_api/core/use_case/base_use_case.dart' as _i8;
 import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_the_day.dart'
     as _i7;
 import 'package:nasa_api/features/last_week_pictures/domain/repository/apod_repository.dart'
@@ -70,7 +69,7 @@ class MockGetLastWeekPicturesUseCase extends _i1.Mock
 
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.PictureOfTheDay>>> call(
-          _i8.NoParams? params) =>
+          bool? params) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

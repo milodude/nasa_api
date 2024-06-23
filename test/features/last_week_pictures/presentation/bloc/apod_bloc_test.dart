@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:nasa_api/core/error/failure.dart';
-import 'package:nasa_api/core/use_case/base_use_case.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_the_day.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/use_case/get_last_week_pictures_use_case.dart';
 import 'package:nasa_api/features/last_week_pictures/presentation/bloc/apod_bloc.dart';
@@ -34,11 +33,12 @@ void main() {
       expect: () => <ApodState>[],
       wait: const Duration(milliseconds: 500),
     );
+    const bool connected = true;
 
     blocTest<ApodBloc, ApodState>(
       'emits [ApodLoading, ApodLoaded], should get a list of pictures',
       setUp: () {
-        when(mockGetLastWeekPicturesUseCase.call(NoParams())).thenAnswer(
+        when(mockGetLastWeekPicturesUseCase.call(connected)).thenAnswer(
             (Invocation realInvocation) =>
                 Future<Either<Failure, List<PictureOfTheDay>>>.value(
                     Right<Failure, List<PictureOfTheDay>>(mockPicturesList)));
@@ -46,7 +46,8 @@ void main() {
       build: () {
         return bloc;
       },
-      act: (ApodBloc bloc) => bloc.add(GetLastWeekPicsEvent()),
+      act: (ApodBloc bloc) =>
+          bloc.add(const GetLastWeekPicsEvent(hasConnection: connected)),
       expect: () {
         return <ApodState>[
           ApodLoading(),
@@ -60,7 +61,7 @@ void main() {
     blocTest<ApodBloc, ApodState>(
       'emits [ApodLoading, ApodError], should try to get the list but throws a failure',
       setUp: () {
-        when(mockGetLastWeekPicturesUseCase.call(NoParams())).thenAnswer(
+        when(mockGetLastWeekPicturesUseCase.call(connected)).thenAnswer(
             (Invocation realInvocation) =>
                 Future<Either<Failure, List<PictureOfTheDay>>>.value(
                     const Left<Failure, List<PictureOfTheDay>>(
@@ -69,7 +70,8 @@ void main() {
       build: () {
         return bloc;
       },
-      act: (ApodBloc bloc) => bloc.add(GetLastWeekPicsEvent()),
+      act: (ApodBloc bloc) =>
+          bloc.add(const GetLastWeekPicsEvent(hasConnection: connected)),
       expect: () {
         return <ApodState>[
           ApodLoading(),

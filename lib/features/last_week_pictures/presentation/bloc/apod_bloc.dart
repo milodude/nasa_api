@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nasa_api/core/error/failure.dart';
-import 'package:nasa_api/core/use_case/base_use_case.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/use_case/get_last_week_pictures_use_case.dart';
 
 import '../../domain/entity/picture_of_the_day.dart';
@@ -26,9 +25,13 @@ class ApodBloc extends Bloc<ApodEvent, ApodState> {
   ) async {
     emit(ApodLoading());
     final Either<Failure, List<PictureOfTheDay>> result =
-        await getLastWeekPicturesUseCase.call(NoParams());
+        await getLastWeekPicturesUseCase.call(event.hasConnection);
 
     result.fold((Failure error) {
+      if (error is NoConnectionFailure) {
+        emit(const ApodNoConnectionError());
+        return;
+      }
       emit(ApodError(errorMessage: error.errorMessage));
     }, (List<PictureOfTheDay> picturesList) {
       emit(ApodLoaded(picturesList: picturesList));

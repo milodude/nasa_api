@@ -10,4 +10,8 @@ sealed class ApodEvent extends Equatable {
 /// GetLastWeekPicsEvent
 ///
 /// Event that fets the lst week pictures of the day.
-class GetLastWeekPicsEvent extends ApodEvent {}
+class GetLastWeekPicsEvent extends ApodEvent {
+  final bool hasConnection;
+
+  const GetLastWeekPicsEvent({required this.hasConnection});
+}
