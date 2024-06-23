@@ -5,5 +5,7 @@
     "pictureDetailsTitle": "Detalhes da imagem",
     "dateTaken": "Data tirada",
     "copyright": "Direito autoral",
-    "noConnectionError": "Não há internet"
+    "noConnectionError": "Não há internet",
+    "search": "Procurar"
+
 }

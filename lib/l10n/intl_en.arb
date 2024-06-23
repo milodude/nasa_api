@@ -23,5 +23,9 @@
     "noConnectionError": "There is no internet",
     "@noConnectionError":{
         "description":"no connection error text"
+    },
+    "search": "Search",
+    "@search":{
+        "description":"search label"
     }
 }
