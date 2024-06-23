@@ -12,3 +12,10 @@ class ServerFailure extends Failure {
   @override
   List<Object?> get props => [super.errorMessage];
 }
+
+class NoConnectionFailure extends Failure {
+  const NoConnectionFailure({required super.errorMessage});
+
+  @override
+  List<Object?> get props => [super.errorMessage];
+}

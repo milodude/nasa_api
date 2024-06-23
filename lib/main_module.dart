@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:nasa_api/core/providers/connectivity_provider.dart';
 import 'package:nasa_api/features/last_week_pictures/domain/entity/picture_of_the_day.dart';
 import 'core/providers/url_provider.dart';
 import 'features/last_week_pictures/data/data_source/apod_data_source.dart';
@@ -24,8 +25,10 @@ class AppModule extends Module {
     i.addLazySingleton(
         () => GetLastWeekPicturesUseCase(apodRepository: i<ApodRepository>()));
     // //!REPOSITORIES
-    i.addLazySingleton<ApodRepository>(
-        () => ApodRepositoryImpl(apodDataSource: i()));
+    i.addLazySingleton<ApodRepository>(() => ApodRepositoryImpl(
+          apodDataSource: i(),
+          connectivityProvider: i<ConnectivityProvider>(),
+        ));
     // //!DATA SOURCES
     i.addLazySingleton<ApodDataSource>(() => ApodDataSourceImpl(
           httpClient: i(),
@@ -34,6 +37,7 @@ class AppModule extends Module {
     //!CORE
     i.addInstance<UrlProvider>(UrlProvider(baseUrl: serverUrl));
     i.addInstance<http.Client>(http.Client());
+    i.addInstance<ConnectivityProvider>(ConnectivityProvider(client: i()));
   }
 
   @override
@@ -42,7 +46,9 @@ class AppModule extends Module {
     r.child(Modular.initialRoute,
         child: (context) => BlocProvider<ApodBloc>.value(
               value: Modular.get<ApodBloc>(),
-              child: const LastWeekPicsPageHandler(),
+              child: LastWeekPicsPageHandler(
+                connectivityProvider: Modular.get<ConnectivityProvider>(),
+              ),
             ));
     //!Apod card details
     r.child(apodDetailsPage,
