@@ -6,6 +6,6 @@
     "dateTaken": "Data tirada",
     "copyright": "Direito autoral",
     "noConnectionError": "Não há internet & sem dados locais",
-    "search": "Procurar"
-
+    "search": "Procurar",
+    "noDataToShow": "Não há dados para mostrar"
 }

@@ -27,5 +27,9 @@
     "search": "Search",
     "@search":{
         "description":"search label"
+    },
+    "noDataToShow": "There is no data to show",
+    "@noDataToShow":{
+        "description":"no data label"
     }
 }

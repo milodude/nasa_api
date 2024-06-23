@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/features/last_week_pictures/presentation/bloc/apod_bloc.dart';
+import 'package:nasa_api/generated/l10n.dart';
 
 import '../../domain/entity/picture_of_the_day.dart';
 import '../widgets/apod_card.dart';
@@ -51,16 +52,22 @@ class _PicturesListPageState extends State<PicturesListPage> {
         onRefresh: () async {
           _onRefresh();
         },
-        child: ListView.builder(
-          itemCount: widget.pictures.length,
-          controller: _scrollController,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return ApodCard(pictureOfTheDay: widget.pictures[index])
-                .animate(delay: Duration(milliseconds: 100 * index))
-                .slide(begin: Offset.fromDirection(0, 1), curve: Curves.easeIn);
-          },
-        ),
+        child: widget.pictures.isEmpty
+            ? Center(
+                child: Text(AppLocalizations.of(context).noDataToShow),
+              )
+            : ListView.builder(
+                itemCount: widget.pictures.length,
+                controller: _scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return ApodCard(pictureOfTheDay: widget.pictures[index])
+                      .animate(delay: Duration(milliseconds: 100 * index))
+                      .slide(
+                          begin: Offset.fromDirection(0, 1),
+                          curve: Curves.easeIn);
+                },
+              ),
       ),
     );
   }
