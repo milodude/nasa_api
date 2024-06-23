@@ -5,8 +5,8 @@ extension DateExtension on DateTime {
   ///
   /// Method to return a formatted string minus 7days from today
   String get getWeekBeforeDate {
-    DateTime now = DateTime.now();
-    DateTime pastDate = now.subtract(const Duration(days: 7));
+    // DateTime now = DateTime.now();
+    DateTime pastDate = subtract(const Duration(days: 7));
     DateFormat dateFormat = DateFormat("yyyy-MM-dd");
     return dateFormat.format(pastDate);
   }
