@@ -23,4 +23,10 @@ final List<PicturesOfTheDayModel> mockPicturesModelList = [
       explanation: 'some explanation',
       title: 'My title',
       url: 'someUrl'),
+  PicturesOfTheDayModel(
+      date: DateTime.now(),
+      copyright: 'copyright1',
+      explanation: 'some explanation1',
+      title: 'My title1',
+      url: 'someUrl1'),
 ];

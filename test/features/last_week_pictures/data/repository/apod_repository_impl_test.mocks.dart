@@ -13,6 +13,8 @@ import 'package:nasa_api/features/last_week_pictures/data/data_source/apod_data_
     as _i4;
 import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_day_model.dart'
     as _i6;
+import 'package:nasa_api/features/local_data/data/data_source/local_pictures_of_the_day_data_source.dart'
+    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -104,6 +106,48 @@ class MockConnectivityProvider extends _i1.Mock
   _i5.Future<void> checkInitialConnection() => (super.noSuchMethod(
         Invocation.method(
           #checkInitialConnection,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+}
+
+/// A class which mocks [LocalPicturesOfTheDayDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalPicturesOfTheDayDataSource extends _i1.Mock
+    implements _i8.LocalPicturesOfTheDayDataSource {
+  MockLocalPicturesOfTheDayDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<void> addPictures(List<_i6.PicturesOfTheDayModel>? pictures) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addPictures,
+          [pictures],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<List<_i6.PicturesOfTheDayModel>> getPictures() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPictures,
+          [],
+        ),
+        returnValue: _i5.Future<List<_i6.PicturesOfTheDayModel>>.value(
+            <_i6.PicturesOfTheDayModel>[]),
+      ) as _i5.Future<List<_i6.PicturesOfTheDayModel>>);
+
+  @override
+  _i5.Future<void> clearPictures() => (super.noSuchMethod(
+        Invocation.method(
+          #clearPictures,
           [],
         ),
         returnValue: _i5.Future<void>.value(),
