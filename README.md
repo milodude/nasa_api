@@ -14,7 +14,12 @@ Research over Nasa´s public API
     flutter run
     ```
 5. The application will build and install in your emulator or device. Remember if you have more than one connected the user interface will ask you to choose one.
-6. Enjoy it!
+6. If you need to run the tests perform the next command line instruction
+    ```
+    flutter test
+    ```
+7. Once you have downloaded the app add a new .env file in the root directory, edit it and add the next line API_KEY="your_nasa_api_key".
+8. Enjoy it!
 
 
 ## ===== Inside the app, main functionalities =====
@@ -38,4 +43,9 @@ Here I'm listing all the good practices used in this project.
 6. Constants usage to avoid magic strings
 7. Clean aruitecture by Uncle Bob(feature based)
 8. Sembast as local db to be able to use the app without connection.
+9. Used dotenv to securely store privater keys
 
+## ===== Review after deliver =====
+
+Documentation: No instructions for running the tests; - Done
+Security: API Key embedded in the code, which is extremely insecure;  - Done. Used dotenv to address this issue.
