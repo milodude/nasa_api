@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_preview_plus/device_preview_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/core/constants/hosts.dart';
 import 'package:nasa_api/core/providers/debug_provider.dart';
@@ -17,6 +18,8 @@ import 'package:path/path.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load();
   //!Local Database creation
   final Directory pathDir = await getApplicationDocumentsDirectory();
   final String dbPath = join(pathDir.path, localServerUrl);

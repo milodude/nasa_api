@@ -1,10 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
-import 'package:nasa_api/core/constants/keys.dart';
 import 'package:nasa_api/core/error/exceptions.dart';
 import 'package:nasa_api/core/extension/date_extension.dart';
 import 'package:nasa_api/core/providers/url_provider.dart';
@@ -40,7 +40,7 @@ void main() {
 
   final Map<String, String?> params = <String, String?>{
     'start_date': DateTime.now().getWeekBeforeDate,
-    'api_key': apiKey,
+    'api_key':  dotenv.env['API_KEY'],
   };
 
   void setUpHttpCallSuccess200() {

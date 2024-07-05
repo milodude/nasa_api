@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:nasa_api/core/constants/keys.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nasa_api/core/extension/date_extension.dart';
 import 'package:nasa_api/core/providers/url_provider.dart';
 import 'package:nasa_api/features/last_week_pictures/data/model/pictures_of_the_day_model.dart';
@@ -33,7 +33,7 @@ class ApodDataSourceImpl implements ApodDataSource {
     DebugProvider.debugLog('[$runtimeType] - Getting images from source...');
     final Map<String, String?> params = <String, String?>{
       'start_date': DateTime.now().getWeekBeforeDate,
-      'api_key': apiKey,
+      'api_key':  dotenv.env['API_KEY'],
     };
     final Uri uri = urlProvider.getUrl('planetary/apod/', params);
 
