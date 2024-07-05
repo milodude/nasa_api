@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:nasa_api/core/error/exceptions.dart';
 
 import 'package:nasa_api/core/error/failure.dart';
 import 'package:nasa_api/core/providers/connectivity_provider.dart';
@@ -48,6 +49,9 @@ class ApodRepositoryImpl extends ApodRepository {
       await localPicturesOfTheDayDataSource.clearPictures();
       await localPicturesOfTheDayDataSource.addPictures(picturesList);
       return Right(picturesList);
+    } on LocalServerException {
+      DebugProvider.debugLog('local server error');
+      return const Left(LocalServerFailure(errorMessage: 'local server error'));
     } catch (error) {
       DebugProvider.debugLog(error.toString());
       return Left(ServerFailure(errorMessage: error.toString()));

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_api/features/last_week_pictures/presentation/bloc/apod_bloc.dart';
 import 'package:nasa_api/generated/l10n.dart';

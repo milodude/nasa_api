@@ -28,6 +28,9 @@ void main() {
     'Accept': '*/*',
     'Access-Control-Allow-Origin': '*',
   };
+  setUp(() async {
+    await dotenv.load();
+  });
 
   List<PicturesOfTheDayModel> getList() {
     List<PicturesOfTheDayModel> photoList = <PicturesOfTheDayModel>[];
@@ -38,11 +41,7 @@ void main() {
     return photoList;
   }
 
-  final Map<String, String?> params = <String, String?>{
-    'start_date': DateTime.now().getWeekBeforeDate,
-    'api_key':  dotenv.env['API_KEY'],
-  };
-
+  late Map<String, String?> params;
   void setUpHttpCallSuccess200() {
     final uri = UrlProvider().getUrl('planetary/apod', params);
     when(mockClient.get(uri, headers: headers))
@@ -57,6 +56,13 @@ void main() {
   }
 
   group('Http configuration: ', () {
+    setUp(() async {
+      await dotenv.load();
+      params = <String, String?>{
+        'start_date': DateTime.now().getWeekBeforeDate,
+        'api_key': dotenv.env['API_KEY'],
+      };
+    });
     testWidgets(
         'should perform a get request for a photo list with application/json header',
         (tester) async {

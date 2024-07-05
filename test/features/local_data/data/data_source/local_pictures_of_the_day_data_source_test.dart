@@ -39,7 +39,7 @@ void main() {
       //ACT
       var result = localDb.getPictures();
       //ASSERT
-      expect(() => result, throwsA(const TypeMatcher<ServerException>()));
+      expect(() => result, throwsA(const TypeMatcher<LocalServerException>()));
     });
 
     test('Should add a list of pictures of the day', () async {

@@ -19,3 +19,10 @@ class NoConnectionFailure extends Failure {
   @override
   List<Object?> get props => [super.errorMessage];
 }
+
+class LocalServerFailure extends Failure {
+  const LocalServerFailure({required super.errorMessage});
+
+  @override
+  List<Object?> get props => [super.errorMessage];
+}

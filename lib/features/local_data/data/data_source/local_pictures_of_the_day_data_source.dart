@@ -39,7 +39,7 @@ class LocalPicturesOfTheDayDataSourceImpl
     } catch (error) {
       DebugProvider.debugLog(
           '$runtimeType - Error while trying to get the local pictures: $error');
-      throw ServerException();
+      throw LocalServerException();
     }
   }
 

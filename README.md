@@ -47,5 +47,8 @@ Here I'm listing all the good practices used in this project.
 
 ## ===== Review after deliver =====
 
-Documentation: No instructions for running the tests; - Done
-Security: API Key embedded in the code, which is extremely insecure;  - Done. Used dotenv to address this issue.
+1. Documentation: No instructions for running the tests; - Done
+2. Security: API Key embedded in the code, which is extremely insecure;  - Done. Used dotenv to address this issue.
+3. Code structure: The local DataSource is implemented outside the feature layers, which can make maintenance and evolution of the code more difficult; Base class is outside the feature layer along with the generic repository implementation. Each particular implmentation is done in each feature.
+4. Code structure: There is no exception handling in the remote DataSource, which can cause unexpected failures; The data source had a try catch block to handled this situation.
+5.  Code structure: Exceptions in the repository are all treated as server exceptions, without proper distinction between different types of errors. Implemented a new failure type in order to differentiate a local and remote server failures.

@@ -33,7 +33,7 @@ class ApodDataSourceImpl implements ApodDataSource {
     DebugProvider.debugLog('[$runtimeType] - Getting images from source...');
     final Map<String, String?> params = <String, String?>{
       'start_date': DateTime.now().getWeekBeforeDate,
-      'api_key':  dotenv.env['API_KEY'],
+      'api_key': dotenv.env['API_KEY'],
     };
     final Uri uri = urlProvider.getUrl('planetary/apod/', params);
 
