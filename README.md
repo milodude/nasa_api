@@ -1,6 +1,19 @@
 # nasa_api
 Research over Nasa´s public API
 
+## ===== Requirements ======
+
+The app must contemplate the following requirements:
+
+Have two screens: a list of the images and a detail screen
+The images list must display the title, date and provide a search field in the top (find by title or date)
+The detail screen must have the image and the texts: date, title and explanation
+Must work offline (will be tested with airplane mode)
+Must support multiple resolutions and sizes
+Regarding the screen with the list, it would be nice to have pull-to-refresh and pagination features
+
+ETD(Estimated time of delivery): 3 days.
+
 ## ===== Dev Instructions =====
 
 1. Clone the repo
@@ -45,10 +58,14 @@ Here I'm listing all the good practices used in this project.
 8. Sembast as local db to be able to use the app without connection.
 9. Used dotenv to securely store privater keys
 
-## ===== Review after deliver =====
+## ===== Review after deliver and fixes =====
+
+I have done all the reviews in a day.
 
 1. Documentation: No instructions for running the tests; - Done
 2. Security: API Key embedded in the code, which is extremely insecure;  - Done. Used dotenv to address this issue.
 3. Code structure: The local DataSource is implemented outside the feature layers, which can make maintenance and evolution of the code more difficult; Base class is outside the feature layer along with the generic repository implementation. Each particular implmentation is done in each feature.
 4. Code structure: There is no exception handling in the remote DataSource, which can cause unexpected failures; The data source had a try catch block to handled this situation.
-5.  Code structure: Exceptions in the repository are all treated as server exceptions, without proper distinction between different types of errors. Implemented a new failure type in order to differentiate a local and remote server failures.
+5.  Code structure: Exceptions in the repository are all treated as server exceptions, without proper distinction between different types of errors. Implemented a new LocalServerFailure type in order to differentiate a local and remote server failures.
+6. Code: The method _hasInternetConnection in the ConnectivityProvider class only returns true if google.com responds with 200, which may not be the ideal behavior; The idea behind is to know if can ping point an external resource any every usage website should do the trick.
+7. Code structure: The repository does not fetch data from the cache in case of a request failure, which affects the resilience of the application; If you do not have internet and the local repository fails, I would not know where to take the information from(Quite strange review this one)
